@@ -17,6 +17,7 @@ void test_add_to_start(Element_creator);
 void test_insert_at(Element_creator);
 void test_add_unique(Element_creator);
 void test_remove_from_start(Element_creator);
+void test_remove_at(Element_creator);
 
 int main()
 {
@@ -27,4 +28,5 @@ int main()
     test_insert_at(&create_int_element);
     test_add_unique(&create_int_element);
     test_remove_from_start(&create_int_element);
+    test_remove_at(&create_int_element);
 }
