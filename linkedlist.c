@@ -45,3 +45,40 @@ Status add_to_start(List_ptr list, Element element)
     list->length++;
     return Success;
 }
+
+Node_ptr get_node(List_ptr list, int position)
+{
+    Node_ptr p_walker = list->first;
+    for (int i = 0; i < list->length; i++)
+    {
+        if (i == position)
+        {
+            return p_walker;
+        }
+        p_walker = p_walker->next;
+    }
+    return NULL;
+}
+
+Status insert_at(List_ptr list, Element element, int position)
+{
+    if (position == list->length)
+    {
+        return add_to_list(list, element);
+    }
+    Node_ptr node = get_node(list, position);
+    if (node == NULL)
+    {
+        return Failure;
+    }
+    if (position == 0)
+    {
+        return add_to_start(list, element);
+    }
+    Node_ptr previous_node = get_node(list, position - 1);
+    Node_ptr new_node = create_node(element);
+    new_node->next = previous_node->next;
+    previous_node->next = new_node;
+    list->length++;
+    return Success;
+}
