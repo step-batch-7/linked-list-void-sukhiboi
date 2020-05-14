@@ -103,3 +103,21 @@ Status add_unique(List_ptr list, Element element, Matcher matcher)
         return Failure;
     return add_to_list(list, element);
 }
+
+Element remove_from_start(List_ptr list)
+{
+    if (list->first == NULL)
+    {
+        return NULL;
+    }
+    Node_ptr to_be_removed = list->first;
+    list->first = list->first->next;
+    if (list->first == NULL)
+    {
+        list->last = NULL;
+    }
+    list->length--;
+    Element removed_element = to_be_removed->element;
+    free(to_be_removed);
+    return removed_element;
+}
