@@ -13,10 +13,12 @@ Element create_int_element(int value)
 void test_create_node(Element_creator);
 void test_create_list(void);
 void test_add_to_list(Element_creator);
+void test_add_to_start(Element_creator creator);
 
 int main()
 {
     test_create_node(&create_int_element);
     test_create_list();
     test_add_to_list(&create_int_element);
+    test_add_to_start(&create_int_element);
 }
