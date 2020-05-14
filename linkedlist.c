@@ -149,3 +149,25 @@ Element remove_from_end(List_ptr list)
 {
     return remove_at(list, list->length - 1);
 }
+
+int get_position(List_ptr list, Element element, Matcher matcher)
+{
+    Node_ptr p_walker = list->first;
+    for (int i = 0; i < list->length; i++)
+    {
+        if (matcher(p_walker->element, element))
+        {
+            return i;
+        }
+        p_walker = p_walker->next;
+    }
+    return -1;
+}
+
+Element remove_first_occurrence(List_ptr list, Element element, Matcher matcher)
+{
+    int position = get_position(list, element, matcher);
+    if (position == -1)
+        return NULL;
+    return remove_at(list, position);
+}
