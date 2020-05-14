@@ -224,3 +224,19 @@ List_ptr filter(List_ptr list, Predicate predicator)
     }
     return filtered;
 }
+
+Element reduce(List_ptr list, Element context, Reducer reducer)
+{
+    if (list->length == 0)
+    {
+        return context;
+    }
+    Element result = reducer(context, list->first->element);
+    Node_ptr p_walker = list->first->next;
+    while (p_walker != NULL)
+    {
+        result = reducer(result, p_walker->element);
+        p_walker = p_walker->next;
+    }
+    return result;
+}
