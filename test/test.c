@@ -37,6 +37,11 @@ Element int_sum(Element e1, Element e2)
     return create_int_element(sum);
 }
 
+void add_one(Element element)
+{
+    *(Int_ptr)(element) += 1;
+}
+
 void test_create_node(Element_creator);
 void test_create_list(void);
 void test_add_to_list(Element_creator);
@@ -52,6 +57,7 @@ void test_reverse(Element_creator);
 void test_map(Element_creator, Mapper);
 void test_filter(Element_creator, Predicate);
 void test_reduce(Element_creator, Reducer);
+void test_forEach(Element_creator, ElementProcessor);
 
 int main()
 {
@@ -70,4 +76,5 @@ int main()
     test_map(&create_int_element, &int_square_map);
     test_filter(&create_int_element, &is_even);
     test_reduce(&create_int_element, &int_sum);
+    test_forEach(&create_int_element, &add_one);
 }

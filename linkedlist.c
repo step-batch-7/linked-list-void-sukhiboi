@@ -240,3 +240,13 @@ Element reduce(List_ptr list, Element context, Reducer reducer)
     }
     return result;
 }
+
+void forEach(List_ptr list, ElementProcessor processor)
+{
+    Node_ptr p_walker = list->first;
+    while (p_walker != NULL)
+    {
+        processor(p_walker->element);
+        p_walker = p_walker->next;
+    }
+}
