@@ -82,3 +82,24 @@ Status insert_at(List_ptr list, Element element, int position)
     list->length++;
     return Success;
 }
+
+Status is_element_available(List_ptr list, Element element, Matcher matcher)
+{
+    Node_ptr p_walker = list->first;
+    for (int i = 0; i < list->length; i++)
+    {
+        if (matcher(p_walker->element, element))
+        {
+            return Success;
+        }
+        p_walker = p_walker->next;
+    }
+    return Failure;
+}
+
+Status add_unique(List_ptr list, Element element, Matcher matcher)
+{
+    if (is_element_available(list, element, matcher))
+        return Failure;
+    return add_to_list(list, element);
+}
