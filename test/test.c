@@ -58,6 +58,7 @@ void test_map(Element_creator, Mapper);
 void test_filter(Element_creator, Predicate);
 void test_reduce(Element_creator, Reducer);
 void test_forEach(Element_creator, ElementProcessor);
+void test_clear_list(Element_creator);
 
 int main()
 {
@@ -77,4 +78,5 @@ int main()
     test_filter(&create_int_element, &is_even);
     test_reduce(&create_int_element, &int_sum);
     test_forEach(&create_int_element, &add_one);
+    test_clear_list(&create_int_element);
 }

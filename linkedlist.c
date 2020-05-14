@@ -250,3 +250,18 @@ void forEach(List_ptr list, ElementProcessor processor)
         p_walker = p_walker->next;
     }
 }
+
+Status clear_list(List_ptr list)
+{
+    Node_ptr to_be_removed = list->first;
+    while (to_be_removed != NULL)
+    {
+        free(to_be_removed->element);
+        free(to_be_removed);
+        to_be_removed = to_be_removed->next;
+    }
+    list->first = NULL;
+    list->last = NULL;
+    list->length = 0;
+    return Success;
+}
