@@ -171,3 +171,17 @@ Element remove_first_occurrence(List_ptr list, Element element, Matcher matcher)
         return NULL;
     return remove_at(list, position);
 }
+
+List_ptr remove_all_occurrences(List_ptr list, Element element, Matcher matcher)
+{
+    List_ptr removed_element_list = create_list();
+    int position = get_position(list, element, matcher);
+    if (position == -1)
+        return NULL;
+    while (position != -1)
+    {
+        add_to_list(removed_element_list, remove_at(list, position));
+        position = get_position(list, element, matcher);
+    }
+    return removed_element_list;
+}
