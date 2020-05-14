@@ -18,6 +18,12 @@ Status int_matcher(Element e1, Element e2)
     return Failure;
 }
 
+Element int_square_map(Element element)
+{
+    int value = *(Int_ptr)(element);
+    return create_int_element(value * value);
+}
+
 void test_create_node(Element_creator);
 void test_create_list(void);
 void test_add_to_list(Element_creator);
@@ -30,6 +36,7 @@ void test_remove_from_end(Element_creator);
 void test_remove_first_occurrence(Element_creator, Element_matcher);
 void test_remove_all_occurrences(Element_creator, Element_matcher);
 void test_reverse(Element_creator);
+void test_map(Element_creator, Mapper);
 
 int main()
 {
@@ -45,4 +52,5 @@ int main()
     test_remove_first_occurrence(&create_int_element, &int_matcher);
     test_remove_all_occurrences(&create_int_element, &int_matcher);
     test_reverse(&create_int_element);
+    test_map(&create_int_element, &int_square_map);
 }
