@@ -144,3 +144,8 @@ Element remove_at(List_ptr list, int position)
     free(to_be_removed);
     return removed_element;
 }
+
+Element remove_from_end(List_ptr list)
+{
+    return remove_at(list, list->length - 1);
+}
