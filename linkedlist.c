@@ -16,3 +16,19 @@ List_ptr create_list(void)
     list->length = 0;
     return list;
 }
+
+Status add_to_list(List_ptr list, Element element)
+{
+    Node_ptr new_node = create_node(element);
+    if (list->first == NULL)
+    {
+        list->first = new_node;
+    }
+    else
+    {
+        list->last->next = new_node;
+    }
+    list->last = new_node;
+    list->length++;
+    return Success;
+}
