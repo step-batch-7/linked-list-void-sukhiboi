@@ -28,6 +28,7 @@ void test_map_with_more_than_one_elements_in_list(Element_creator creator, Mappe
 
 void test_map(Element_creator creator, Mapper mapper)
 {
+    printf("\nTesting map\n");
     test_map_with_no_elements_in_list(mapper);
     test_map_with_more_than_one_elements_in_list(creator, mapper);
 }

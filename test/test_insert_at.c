@@ -62,6 +62,7 @@ void test_insert_at_when_addding_to_next_to_last_position_while_list_is_not_empt
 
 void test_insert_at(Element_creator creator)
 {
+    printf("\nTesting insert_at\n");
     test_insert_at_when_addding_to_first_position_while_list_is_empty(creator);
     test_insert_at_when_addding_to_first_position_while_list_is_not_empty(creator);
     test_insert_at_when_addding_to_last_position_while_list_is_not_empty(creator);

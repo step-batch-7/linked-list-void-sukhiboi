@@ -25,8 +25,8 @@ void test_remove_from_end_when_list_has_one_elements(Element_creator creator)
     Element removed_element = remove_from_end(list);
     assert(list->length, 0, "Length of list should be 0");
     ptr_assert(list->first, list->last, "List's first and last should point to same element");
-    ptr_assert(list->first, NULL, "List's first should not point to NULL");
-    ptr_assert(list->last, NULL, "List's last should not point to NULL");
+    ptr_assert(list->first, NULL, "List's first should point to NULL");
+    ptr_assert(list->last, NULL, "List's last should point to NULL");
     assert(*(Int_ptr)(removed_element), 23, "Value of remove_element should be 23");
 }
 
@@ -37,8 +37,8 @@ void test_remove_from_end_when_list_has_no_elements()
     Element removed_element = remove_from_end(list);
     assert(list->length, 0, "Length of list should be 0");
     ptr_assert(list->first, list->last, "List's first and last should point to same element");
-    ptr_assert(list->first, NULL, "List's first should not point to NULL");
-    ptr_assert(list->last, NULL, "List's last should not point to NULL");
+    ptr_assert(list->first, NULL, "List's first should point to NULL");
+    ptr_assert(list->last, NULL, "List's last should point to NULL");
     ptr_assert(removed_element, NULL, "removed element should point to NULL");
 }
 

@@ -41,6 +41,7 @@ void test_reverse_when_list_has_more_than_one_elements(Element_creator creator)
 
 void test_reverse(Element_creator creator)
 {
+    printf("\nTesting reverse\n");
     test_reverse_when_list_has_no_elements();
     test_reverse_when_list_has_one_elements(creator);
     test_reverse_when_list_has_more_than_one_elements(creator);
