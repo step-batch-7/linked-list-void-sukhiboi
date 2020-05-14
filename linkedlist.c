@@ -202,9 +202,25 @@ List_ptr map(List_ptr list, Mapper mapper)
 {
     List_ptr mapped = create_list();
     Node_ptr p_walker = list->first;
-    while(p_walker != NULL){
+    while (p_walker != NULL)
+    {
         add_to_list(mapped, mapper(p_walker->element));
         p_walker = p_walker->next;
     }
     return mapped;
+}
+
+List_ptr filter(List_ptr list, Predicate predicator)
+{
+    List_ptr filtered = create_list();
+    Node_ptr p_walker = list->first;
+    while (p_walker != NULL)
+    {
+        if (predicator(p_walker->element))
+        {
+            add_to_list(filtered, p_walker->element);
+        }
+        p_walker = p_walker->next;
+    }
+    return filtered;
 }

@@ -24,6 +24,13 @@ Element int_square_map(Element element)
     return create_int_element(value * value);
 }
 
+Status is_even(Element element)
+{
+    if (*(Int_ptr)(element) % 2 == 0)
+        return Success;
+    return Failure;
+}
+
 void test_create_node(Element_creator);
 void test_create_list(void);
 void test_add_to_list(Element_creator);
@@ -37,6 +44,7 @@ void test_remove_first_occurrence(Element_creator, Element_matcher);
 void test_remove_all_occurrences(Element_creator, Element_matcher);
 void test_reverse(Element_creator);
 void test_map(Element_creator, Mapper);
+void test_filter(Element_creator, Predicate);
 
 int main()
 {
@@ -53,4 +61,5 @@ int main()
     test_remove_all_occurrences(&create_int_element, &int_matcher);
     test_reverse(&create_int_element);
     test_map(&create_int_element, &int_square_map);
+    test_filter(&create_int_element, &is_even);
 }
