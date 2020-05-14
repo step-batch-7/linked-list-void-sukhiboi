@@ -29,6 +29,7 @@ void test_remove_at(Element_creator);
 void test_remove_from_end(Element_creator);
 void test_remove_first_occurrence(Element_creator, Element_matcher);
 void test_remove_all_occurrences(Element_creator, Element_matcher);
+void test_reverse(Element_creator);
 
 int main()
 {
@@ -43,4 +44,5 @@ int main()
     test_remove_from_end(&create_int_element);
     test_remove_first_occurrence(&create_int_element, &int_matcher);
     test_remove_all_occurrences(&create_int_element, &int_matcher);
+    test_reverse(&create_int_element);
 }

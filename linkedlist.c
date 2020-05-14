@@ -185,3 +185,14 @@ List_ptr remove_all_occurrences(List_ptr list, Element element, Matcher matcher)
     }
     return removed_element_list;
 }
+
+List_ptr reverse(List_ptr list){
+    List_ptr reversed = create_list();
+    Node_ptr p_walker = list->first;
+    for (int i = 0; i < list->length; i++)
+    {
+        add_to_start(reversed, p_walker->element);
+        p_walker = p_walker->next;
+    }
+    return reversed;
+}
