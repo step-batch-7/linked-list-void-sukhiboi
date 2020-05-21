@@ -41,6 +41,7 @@ typedef Status (*Predicate)(Element);
 typedef Element (*Reducer)(Element, Element);
 typedef void (*ElementProcessor)(Element);
 typedef Status (*Matcher)(Element, Element);
+typedef Status (*Comparer)(Element, Element);
 
 Node_ptr create_node(Element element);
 List_ptr create_list(void);
@@ -66,4 +67,6 @@ List_ptr remove_all_occurrences(List_ptr, Element element, Matcher matcher); // 
 Status add_unique(List_ptr list, Element element, Matcher matcher);
 
 Status clear_list(List_ptr);
+Status sort(List_ptr list, Comparer comparer);
+
 #endif

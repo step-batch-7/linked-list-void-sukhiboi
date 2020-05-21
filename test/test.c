@@ -18,6 +18,13 @@ Status int_matcher(Element e1, Element e2)
     return Failure;
 }
 
+Status int_comparer(Element e1, Element e2)
+{
+    if (*(Int_ptr)(e1) < *(Int_ptr)(e2))
+        return Success;
+    return Failure;
+}
+
 Element int_square_map(Element element)
 {
     int value = *(Int_ptr)(element);
@@ -59,6 +66,7 @@ void test_filter(Element_creator, Predicate);
 void test_reduce(Element_creator, Reducer);
 void test_forEach(Element_creator, ElementProcessor);
 void test_clear_list(Element_creator);
+void test_sort(Element_creator, Comparer);
 
 int main()
 {
@@ -79,4 +87,5 @@ int main()
     test_reduce(&create_int_element, &int_sum);
     test_forEach(&create_int_element, &add_one);
     test_clear_list(&create_int_element);
+    test_sort(&create_int_element, &int_comparer);
 }

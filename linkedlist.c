@@ -265,3 +265,32 @@ Status clear_list(List_ptr list)
     list->length = 0;
     return Success;
 }
+
+void swap_node(List_ptr list, int idx1, int idx2)
+{
+    Node_ptr node1 = get_node(list, idx1);
+    Node_ptr node2 = get_node(list, idx2);
+    Node_ptr temp = NULL;
+    temp = node1->element;
+    node1->element = node2->element;
+    node2->element = temp;
+}
+
+Status sort(List_ptr list, Comparer compare)
+{
+    //Selection Sort
+    Node_ptr p_walker = list->first;
+    for (int i = 0; i < list->length; i++)
+    {
+        int idx = i;
+        for (int j = i + 1; j < list->length; j++)
+        {
+            Element e1 = get_node(list, j)->element;
+            Element e2 = get_node(list, idx)->element;
+            if (compare(e1, e2) == Success)
+                idx = j;
+        }
+        swap_node(list, idx, i);
+    }
+    return Success;
+}
