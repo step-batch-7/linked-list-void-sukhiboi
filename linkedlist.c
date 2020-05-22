@@ -278,19 +278,41 @@ void swap_node(List_ptr list, int idx1, int idx2)
 
 Status sort(List_ptr list, Comparer compare)
 {
-    //Selection Sort
+    //Bubble Sort
     Node_ptr p_walker = list->first;
-    for (int i = 0; i < list->length; i++)
+    int sortCount;
+    while (sortCount != 0)
     {
-        int idx = i;
-        for (int j = i + 1; j < list->length; j++)
+        sortCount = 0;
+        for (int i = 1; i < list->length; i++)
         {
-            Element e1 = get_node(list, j)->element;
-            Element e2 = get_node(list, idx)->element;
+            Element e1 = get_node(list, i)->element;
+            Element e2 = get_node(list, i - 1)->element;
             if (compare(e1, e2) == Success)
-                idx = j;
+            {
+                sortCount++;
+                swap_node(list, i, i - 1);
+            }
         }
-        swap_node(list, idx, i);
     }
     return Success;
 }
+
+//Selection Sort
+// Status sort(List_ptr list, Comparer compare)
+// {
+//     Node_ptr p_walker = list->first;
+//     for (int i = 0; i < list->length; i++)
+//     {
+//         int idx = i;
+//         for (int j = i + 1; j < list->length; j++)
+//         {
+//             Element e1 = get_node(list, j)->element;
+//             Element e2 = get_node(list, idx)->element;
+//             if (compare(e1, e2) == Success)
+//                 idx = j;
+//         }
+//         swap_node(list, idx, i);
+//     }
+//     return Success;
+// }
