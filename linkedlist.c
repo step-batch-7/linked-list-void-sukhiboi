@@ -283,11 +283,10 @@ Status sort(List_ptr list, Comparer compare)
     for (int i = 1; i < list->length; i++)
     {
         Element picked_element = remove_at(list, i);
-        Element e2 = get_node(list, i - 1)->element;
-        int unsorted_array_idx = i;
-        while (unsorted_array_idx > 0 && compare(picked_element, e2) == Success)
-            unsorted_array_idx--;
-        insert_at(list, picked_element, unsorted_array_idx);
+        int idx = i; //unsorted array index
+        while (idx > 0 && compare(picked_element, get_node(list, idx - 1)->element))
+            idx--;
+        insert_at(list, picked_element, idx);
     }
     return Success;
 }
