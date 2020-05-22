@@ -276,29 +276,45 @@ void swap_node(List_ptr list, int idx1, int idx2)
     node2->element = temp;
 }
 
+//Insertion Sort
 Status sort(List_ptr list, Comparer compare)
 {
-    //Bubble Sort
     Node_ptr p_walker = list->first;
-    int sortCount;
-    while (sortCount != 0)
+    for (int i = 1; i < list->length; i++)
     {
-        sortCount = 0;
-        for (int i = 1; i < list->length; i++)
-        {
-            Element e1 = get_node(list, i)->element;
-            Element e2 = get_node(list, i - 1)->element;
-            if (compare(e1, e2) == Success)
-            {
-                sortCount++;
-                swap_node(list, i, i - 1);
-            }
-        }
+        Element picked_element = remove_at(list, i);
+        Element e2 = get_node(list, i - 1)->element;
+        int unsorted_array_idx = i;
+        while (unsorted_array_idx > 0 && compare(picked_element, e2) == Success)
+            unsorted_array_idx--;
+        insert_at(list, picked_element, unsorted_array_idx);
     }
     return Success;
 }
 
-//Selection Sort
+// //Bubble Sort
+// Status sort(List_ptr list, Comparer compare)
+// {
+//     Node_ptr p_walker = list->first;
+//     int sortCount;
+//     while (sortCount != 0)
+//     {
+//         sortCount = 0;
+//         for (int i = 1; i < list->length; i++)
+//         {
+//             Element e1 = get_node(list, i)->element;
+//             Element e2 = get_node(list, i - 1)->element;
+//             if (compare(e1, e2) == Success)
+//             {
+//                 sortCount++;
+//                 swap_node(list, i, i - 1);
+//             }
+//         }
+//     }
+//     return Success;
+// }
+
+// //Selection Sort
 // Status sort(List_ptr list, Comparer compare)
 // {
 //     Node_ptr p_walker = list->first;
